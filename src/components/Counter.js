@@ -5,11 +5,12 @@ import classes from './Counter.module.css';
 const Counter = () => {
 
 //a function that will dispatch an action against Redux store
-const dispatch = useDispatch();
+ const dispatch = useDispatch();
 
 //useSelector looks for the action inside the index.js
 //when use useSelector, redux will automatically subscribe to the store
   const counter = useSelector(state =>state.counter);
+  const show = useSelector(state=>state.showCounter);
 
   const incrementHandler = () =>{
   //add a dispatch function and execute it  
@@ -24,12 +25,14 @@ const dispatch = useDispatch();
     dispatch({type:'decrement'});
   }; 
 
-  const toggleCounterHandler = () => {};
+  const toggleCounterHandler = () => {
+    dispatch({type:'toggle'});
+  };
 
   return (
     <main className={classes.counter}>
       <h1>Redux Counter</h1>
-      <div className={classes.value}>{counter}</div>
+        {show && <div className={classes.value}>{counter}</div>}
       <div>
         <button onClick={incrementHandler}>Increment</button>
         <button onClick={increaseHandler}>Increase By 5</button>
