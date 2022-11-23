@@ -10,8 +10,8 @@ const Counter = () => {
 
 //useSelector looks for the action inside the index.js
 //when use useSelector, redux will automatically subscribe to the store
-  const counter = useSelector((state) =>state.counter);
-  const show = useSelector((state)=>state.showCounter);
+  const counter = useSelector((state) =>state.counter.counter);
+  const show = useSelector((state)=>state.counter.showCounter);
 
   const incrementHandler = () =>{
   //add a dispatch function and execute it  
